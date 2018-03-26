@@ -1,6 +1,6 @@
 var ffi = require('ffi');
 
-var pi_spi_din = ffi.Library('libpi_spi_din', {
+var pi_spi_din = ffi.Library('libwidgetlords', {
 	'pi_spi_din_init': [ 'void', [] ],
 	'pi_spi_din_8di_init': [ 'void', [ 'uint32', 'uint8' ] ],
 	'pi_spi_din_8di_read_single': [ 'uint8', [ 'uint32', 'uint8', 'uint8' ] ]
