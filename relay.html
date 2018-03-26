@@ -1,0 +1,58 @@
+<script type="text/javascript">
+    RED.nodes.registerType('widgetlords-relay',{
+        category: 'WidgetLords',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            channel: {value: "0"},
+            address: {value: "0"},
+            chipenable: {value: "0"}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Relay";
+        },
+        paletteLabel: "Relay"
+    });
+</script>
+
+<script type="text/x-red" data-template-name="widgetlords-relay">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">    
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
+        <select id="node-input-channel">
+			<option value="0">1</option>
+			<option value="1">2</option>
+			<option value="2">3</option>
+			<option value="3">4</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-address"><i class="icon-tag"></i> Address</label>
+        <select id="node-input-address">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-chipenable"><i class="icon-tag"></i> Chip Enable</label>
+        <select id="node-input-chipenable">
+			<option value="0">CE0</option>
+			<option value="1">CE1</option>
+			<option value="2">CE2</option>
+			<option value="3">CE3</option>
+			<option value="4">CE4</option>
+        </select>
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="widgetlords-relay">
+    <p>widgetlords-relay</p>
+</script>

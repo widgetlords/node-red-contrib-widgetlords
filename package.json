@@ -1,0 +1,20 @@
+{
+  "name": "node-red-contrib-widgetlords",
+  "version": "1.0.0",
+  "description": "",
+  "author": "widgetlords",
+  "license": "MIT",
+  "homepage": "https://widgetlords.com",
+  "keywords": [ "node-red", "widgetlords" ],
+  "node-red": {
+    "nodes": {
+	  "widgetlords-analog-in": "analog-in.js",
+	  "widgetlords-analog-out": "analog-out.js",
+	  "widgetlords-digital": "digital.js",
+      "widgetlords-relay": "relay.js"
+    }
+  },
+  "dependencies": {
+    "ffi": "^2.2.0"
+  }
+}
