@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-widgetlords",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "author": "widgetlords",
   "license": "MIT",
@@ -8,13 +8,26 @@
   "keywords": [ "node-red", "widgetlords" ],
   "node-red": {
     "nodes": {
-	  "widgetlords-analog-in": "analog-in.js",
-	  "widgetlords-analog-out": "analog-out.js",
-	  "widgetlords-digital": "digital.js",
-      "widgetlords-relay": "relay.js"
+      	"widgetlords-pi-spi-digital": "pi-spi/digital.js",
+      	"widgetlords-pi-spi-relay": "pi-spi/relay.js",
+      	"widgetlords-pi-spi-analog-in": "pi-spi/analog-in.js",
+      	"widgetlords-pi-spi-analog-out": "pi-spi/analog-out.js",
+		"widgetlords-analog-in": "pi-spi-din/analog-in.js",
+		"widgetlords-analog-out": "pi-spi-din/analog-out.js",
+		"widgetlords-digital": "pi-spi-din/digital.js",
+      	"widgetlords-relay": "pi-spi-din/relay.js",
+      	"widgetlords-vpe-3011b-digital": "vpe-3011b/digital.js",
+      	"widgetlords-vpe-3011b-relay": "vpe-3011b/relay.js",
+      	"widgetlords-vpe-3011b-sdafe": "vpe-3011b/sdafe.js",
+      	"widgetlords-vpe-2901a-digital": "vpe-2901a/digital.js",
+      	"widgetlords-vpe-2901a-relay": "vpe-2901a/relay.js",
+      	"widgetlords-vpe-2901a-sdafe": "vpe-2901a/sdafe.js",
+      	"widgetlords-vpe-2901a-analog-out": "vpe-2901a/analog-out.js"
     }
   },
   "dependencies": {
-    "ffi": "^2.2.0"
+    "ffi-napi": "^2.4.0",
+    "ref-napi": "^1.4.0",
+    "ref-struct-di": "^1.1.0"
   }
 }

@@ -1,14 +1,15 @@
 <script type="text/javascript">
-    RED.nodes.registerType('widgetlords-analog-out',{
-        category: 'WidgetLords',
-        color: '#a6bbcf',
+    RED.nodes.registerType('widgetlords-vpe-2901a-analog-out',{
+        category: 'WL VPE 2901A',
+        color: '#d3d3d3',
         defaults: {
             name: {value:""},
             channel: {value: "0"},
         },
         inputs: 1,
         outputs: 0,
-        icon: "light.png",
+        icon: "arrow-in.png",
+	align: 'right',
         label: function() {
             return this.name || "Analog Output";
         },
@@ -16,7 +17,7 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="widgetlords-analog-out">
+<script type="text/x-red" data-template-name="widgetlords-vpe-2901a-analog-out">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -26,12 +27,10 @@
         <select id="node-input-channel">
 			<option value="0">1</option>
 			<option value="1">2</option>
-			<option value="2">3</option>
-			<option value="3">4</option>
         </select>
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="widgetlords-analog-out">
-    <p>widgetlords-analog-out</p>
+<script type="text/x-red" data-help-name="widgetlords-vpe-2901a-analog-out">
+    <p>widgetlords-vpe-2901a-analog-out</p>
 </script>

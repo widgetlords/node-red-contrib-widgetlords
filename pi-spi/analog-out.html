@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('widgetlords-pi-spi-analog-out',{
+        category: 'WL PI SPI',
+        color: '#1e90ff',
+        defaults: {
+            name: {value:""},
+            channel: {value: "0"},
+            chipenable: {value: "0"}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "arrow-in.png",
+	align: 'right',
+        label: function() {
+            return this.name || "2AO";
+        },
+        paletteLabel: "2AO"
+    });
+</script>
+
+<script type="text/x-red" data-template-name="widgetlords-pi-spi-analog-out">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">    
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
+        <select id="node-input-channel">
+			<option value="0">1</option>
+			<option value="1">2</option>
+        </select>
+	</div>
+	<div class="form-row">    
+        <label for="node-input-chipenable"><i class="icon-tag"></i> Chip Enable</label>
+        <select id="node-input-chipenable">
+			<option value="0">DEFAULT</option>
+			<option value="1">OPTIONAL</option>
+        </select>
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="widgetlords-pi-spi-analog-out">
+    <p>widgetlords-pi-spi-analog-out</p>
+</script>

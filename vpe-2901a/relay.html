@@ -1,0 +1,36 @@
+<script type="text/javascript">
+    RED.nodes.registerType('widgetlords-vpe-2901a-relay',{
+        category: 'WL VPE 2901A',
+        color: '#d3d3d3',
+        defaults: {
+            name: {value:""},
+            channel: {value: "0"}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "arrow-in.png",
+	align: 'right',
+        label: function() {
+            return this.name || "Relay";
+        },
+        paletteLabel: "Relay"
+    });
+</script>
+
+<script type="text/x-red" data-template-name="widgetlords-vpe-2901a-relay">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">    
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
+        <select id="node-input-channel">
+			<option value="0">1</option>
+			<option value="1">2</option>
+        </select>
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="widgetlords-vpe-2901a-relay">
+    <p>widgetlords-vpe-2901a-relay</p>
+</script>

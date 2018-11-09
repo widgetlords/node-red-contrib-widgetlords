@@ -1,0 +1,64 @@
+<script type="text/javascript">
+    RED.nodes.registerType('widgetlords-pi-spi-digital',{
+        category: 'WL PI SPI',
+        color: '#1e90ff',
+        defaults: {
+            name: {value:""},
+            channel: {value: "0"},
+            address: {value: "0"},
+            chipenable: {value: "0"},
+            interval: {value: "1000"}
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name || "8DI";
+        },
+        paletteLabel: "8DI"
+    });
+</script>
+
+<script type="text/x-red" data-template-name="widgetlords-pi-spi-digital">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">    
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
+        <select id="node-input-channel">
+			<option value="0">1</option>
+			<option value="1">2</option>
+			<option value="2">3</option>
+			<option value="3">4</option>
+			<option value="4">5</option>
+			<option value="5">6</option>
+			<option value="6">7</option>
+			<option value="7">8</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-address"><i class="icon-tag"></i> Address</label>
+        <select id="node-input-address">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-chipenable"><i class="icon-tag"></i> Chip Enable</label>
+        <select id="node-input-chipenable">
+			<option value="0">DEFAULT</option>
+			<option value="1">OPTIONAL</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-interval"><i class="icon-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval" min="1">
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="widgetlords-pi-spi-digital">
+    <p>widgetlords-pi-spi-digital</p>
+</script>

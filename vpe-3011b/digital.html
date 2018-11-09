@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    RED.nodes.registerType('widgetlords-vpe-3011b-digital',{
+        category: `WL VPE 3011B`,
+        color: '#90ee90',
+        defaults: {
+            name: {value:""},
+            channel: {value: "0"},
+            interval: {value: "1000"}
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name || "Digital Input";
+        },
+        paletteLabel: "Digital Input"
+    });
+</script>
+
+<script type="text/x-red" data-template-name="widgetlords-vpe-3011b-digital">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">    
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
+        <select id="node-input-channel">
+			<option value="0">1</option>
+			<option value="1">2</option>
+			<option value="2">3</option>
+			<option value="3">4</option>
+			<option value="4">5</option>
+			<option value="5">6</option>
+			<option value="6">7</option>
+			<option value="7">8</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-interval"><i class="icon-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval" min="1">
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="widgetlords-vpe-3011b-digital">
+    <p>widgetlords-vpe-3011b-digital</p>
+</script>

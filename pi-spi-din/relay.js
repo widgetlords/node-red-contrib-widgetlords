@@ -1,12 +1,10 @@
-var ffi = require('ffi');
+var ffi = require('ffi-napi');
 
 var pi_spi_din = ffi.Library('libwidgetlords', {
 	'pi_spi_din_init': [ 'void', [] ],
 	'pi_spi_din_4ko_init': [ 'void', [ 'uint32', 'uint8' ] ],
 	'pi_spi_din_4ko_write_single': [ 'void', [ 'uint32', 'uint8', 'uint8', 'uint8' ] ]
 });
-
-pi_spi_din.pi_spi_din_init();
 
 module.exports = function(RED) {
     function RelayNode(config) {
@@ -18,6 +16,7 @@ module.exports = function(RED) {
         
         var node = this;
         
+        pi_spi_din.pi_spi_din_init();
         pi_spi_din.pi_spi_din_4ko_init(parseInt(node.chipenable), parseInt(node.address));
         
         node.on('input', function(msg) {
@@ -27,6 +26,8 @@ module.exports = function(RED) {
 				 parseInt(node.address),
 				 parseInt(node.channel), 
 				 msg.payload);
+				 
+			node.status({fill:"green", shape:"dot", text:msg.payload});
         });
     }
     RED.nodes.registerType("widgetlords-relay", RelayNode);

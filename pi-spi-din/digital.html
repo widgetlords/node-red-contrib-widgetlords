@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('widgetlords-digital',{
-        category: 'WidgetLords',
-        color: '#a6bbcf',
+        category: 'WL PI SPI DIN',
+        color: '#80bfff',
         defaults: {
             name: {value:""},
             channel: {value: "0"},
@@ -11,11 +11,11 @@
         },
         inputs: 0,
         outputs: 1,
-        icon: "serial.png",
+        icon: "arrow-in.png",
         label: function() {
-            return this.name || "Digital Input";
+            return this.name || "8DI";
         },
-        paletteLabel: "Digital Input"
+        paletteLabel: "8DI"
     });
 </script>
 
