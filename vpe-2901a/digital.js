@@ -11,7 +11,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         var node = this;
         
-        widgetlords.pi_spi_din_init();
+        // widgetlords.pi_spi_din_init();
         widgetlords.vpe_2901a_init();
         
         function update()

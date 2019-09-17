@@ -9,7 +9,7 @@ module.exports = function(RED) {
     function RelayNode(config) {
         RED.nodes.createNode(this,config);
         
-        widgetlords.pi_spi_init();
+        // widgetlords.pi_spi_init();
         
         this.channel = config.channel;
         this.chipenable = config.chipenable;

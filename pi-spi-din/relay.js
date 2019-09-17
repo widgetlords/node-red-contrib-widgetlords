@@ -16,7 +16,7 @@ module.exports = function(RED) {
         
         var node = this;
         
-        pi_spi_din.pi_spi_din_init();
+        // pi_spi_din.pi_spi_din_init();
         pi_spi_din.pi_spi_din_4ko_init(parseInt(node.chipenable), parseInt(node.address));
         
         node.on('input', function(msg) {

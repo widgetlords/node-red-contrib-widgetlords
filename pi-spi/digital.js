@@ -11,7 +11,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         
-        widgetlords.pi_spi_init();
+        // widgetlords.pi_spi_init();
         widgetlords.pi_spi_8di_init(parseInt(config.address), parseInt(config.chipenable));
         
         function update()

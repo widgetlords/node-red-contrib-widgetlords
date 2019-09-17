@@ -10,7 +10,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         
-        widgetlords.pi_spi_init();
+        // widgetlords.pi_spi_init();
         
         function update()
         {

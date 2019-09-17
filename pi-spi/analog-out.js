@@ -10,7 +10,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
 		
-		widgetlords.pi_spi_init();
+	// widgetlords.pi_spi_init();
 		
 		node.on('input', function(msg) {
             this.status({fill:"green",shape:"dot",text:msg.payload});

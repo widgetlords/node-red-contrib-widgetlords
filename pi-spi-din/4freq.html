@@ -1,0 +1,77 @@
+<script type="text/javascript">
+    RED.nodes.registerType('widgetlords-pi-spi-din-4freq',{
+        category: 'WL PI SPI DIN',
+        color: '#80bfff',
+        defaults: {
+            name: {value:""},
+            channel: {value: "0"},
+            chipenable: {value: "0"},
+            interval: {value: "1000"},
+	    address: {value: "0"},
+	    itype: {value: "0"}
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "arrow-in.png",
+        label: function() {
+            return this.name || "4FREQ";
+        },
+        paletteLabel: "4FREQ"
+    });
+</script>
+
+<script type="text/x-red" data-template-name="widgetlords-pi-spi-din-4freq">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">    
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
+        <select id="node-input-channel">
+			<option value="0">1</option>
+			<option value="1">2</option>
+			<option value="2">3</option>
+			<option value="3">4</option>
+        </select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-chipenable"><i class="icon-tag"></i> Chip Enable</label>
+        <select id="node-input-chipenable">
+			<option value="0">CE0</option>
+			<option value="1">CE1</option>
+			<option value="2">CE2</option>
+			<option value="3">CE3</option>
+			<option value="4">CE4</option>
+        </select>
+	</div>
+	<div class="form-row">
+        	<label for="node-input-address"><i class="icon-tag"></i> Address</label>
+	        <select id="node-input-address">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+        	</select>
+	</div>
+	<div class="form-row">
+        	<label for="node-input-itype"><i class="icon-tag"></i> Type</label>
+	        <select id="node-input-itype">
+			<option value="0">Frequency (Fixed)</option>
+			<option value="1">Frequency (Variable)</option>
+			<option value="2">Pulse Counter</option>
+			<option value="3">Digital Input</option>
+        	</select>
+	</div>
+	<div class="form-row">
+        <label for="node-input-interval"><i class="icon-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval" min="1">
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="widgetlords-pi-spi-din-4freq">
+    <p>PI-SPI-DIN-4FREQ</p>
+</script>

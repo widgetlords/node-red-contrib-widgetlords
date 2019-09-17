@@ -11,7 +11,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this,config);
         var node = this;
         
-        pi_spi_din.pi_spi_din_init();
+        // pi_spi_din.pi_spi_din_init();
         pi_spi_din.pi_spi_din_8di_init(parseInt(config.chipenable), parseInt(config.address));
         
         function update()
