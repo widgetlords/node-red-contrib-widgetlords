@@ -35,6 +35,7 @@ module.exports = function(RED) {
 			value = (value >> channel) & 1;
 		}
 		msg = { payload: value };
+		if (config.topic !== undefined && config.topic !== '') msg.topic = config.topic;
 		node.send(msg);
 
 		node.status({fill:"green", shape:"dot", text:msg.payload});

@@ -18,6 +18,7 @@ module.exports = function(RED) {
 		widgetlords.pi_spi_8ai_16b_set_channel(parseInt(config.channel), parseInt(config.chipenable));
 		var value = widgetlords.pi_spi_8ai_16b_read(parseInt(config.chipenable));
 		msg = { payload: value };
+		if (config.topic !== undefined && config.topic !== '') msg.topic = config.topic;
 		node.send(msg);
 
 		node.status({fill:"green", shape:"dot", text:msg.payload});

@@ -4,6 +4,7 @@
         color: '#90ee90',
         defaults: { // type is reserved
             name: {value:""},
+            topic: {value:''},
             channel: {value: "0"},
             input_type: {value: "1"},
             interval: {value: "1000"}
@@ -18,10 +19,14 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="widgetlords-vpe-3011b-sdafe">
+<script type="text/html" data-template-name="widgetlords-vpe-3011b-sdafe">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+	</div>
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-envelope-o"></i> Topic</label>
+        <input type="text" id="node-input-topic">
 	</div>
     <div class="form-row">    
         <label for="node-input-channel"><i class="icon-tag"></i> Channel</label>
@@ -46,6 +51,6 @@
 	</div>
 </script>
 
-<script type="text/x-red" data-help-name="widgetlords-vpe-3011b-sdafe">
+<script type="text/html" data-help-name="widgetlords-vpe-3011b-sdafe">
     <p>widgetlords-vpe-3011b-sdafe</p>
 </script>
