@@ -18,6 +18,7 @@ module.exports = function(RED) {
 				(parseInt(config.chipenable),
 				 parseInt(config.channel));
 			msg = { payload: value };
+			if (config.topic !== undefined && config.topic !== '') msg.topic = config.topic;
 			node.send(msg);
 			
 			node.status({fill:"green", shape:"dot", text:msg.payload});
