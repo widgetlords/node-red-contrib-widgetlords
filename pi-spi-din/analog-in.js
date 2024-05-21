@@ -1,9 +1,11 @@
-var ffi = require("ffi-napi");
+const koffi = require("koffi");
 
-var pi_spi_din = ffi.Library("libwidgetlords", {
-  pi_spi_din_init: ["void", []],
-  pi_spi_din_8ai_read_single: ["uint16", ["uint32", "uint8"]],
-});
+const widgetlords = koffi.load("libwidgetlords.so");
+const pi_spi_din_8ai_read_single = widgetlords.func(
+  "pi_spi_din_8ai_read_single",
+  "uint16",
+  ["uint32", "uint8"],
+);
 
 module.exports = function (RED) {
   function Node(config) {
@@ -11,7 +13,7 @@ module.exports = function (RED) {
     var node = this;
 
     function update() {
-      var value = pi_spi_din.pi_spi_din_8ai_read_single(
+      var value = pi_spi_din_8ai_read_single(
         parseInt(config.chipenable),
         parseInt(config.channel),
       );

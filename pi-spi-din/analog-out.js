@@ -1,8 +1,11 @@
-var ffi = require("ffi-napi");
+const koffi = require("koffi");
 
-var pi_spi_din = ffi.Library("libwidgetlords", {
-  pi_spi_din_4ao_write_single: ["void", ["uint8", "uint8", "uint16"]],
-});
+const widgetlords = koffi.load("libwidgetlords.so");
+const pi_spi_din_4ao_write_single = widgetlords.func(
+  "pi_spi_din_4ao_write_single",
+  "void",
+  ["uint8", "uint8", "uint16"],
+);
 
 module.exports = function (RED) {
   function Node(config) {
@@ -11,7 +14,7 @@ module.exports = function (RED) {
 
     node.on("input", function (msg) {
       this.status({ fill: "green", shape: "dot", text: msg.payload });
-      pi_spi_din.pi_spi_din_4ao_write_single(
+      pi_spi_din_4ao_write_single(
         parseInt(config.address),
         parseInt(config.channel),
         parseInt(msg.payload),

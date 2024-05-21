@@ -1,9 +1,11 @@
-var ffi = require("ffi-napi");
+const koffi = require("koffi");
 
-var widgetlords = ffi.Library("libwidgetlords", {
-  pi_spi_init: ["void", []],
-  pi_spi_8ko_write_single: ["void", ["uint8", "uint8", "uint8"]],
-});
+const widgetlords = koffi.load("libwidgetlords.so");
+const pi_spi_8ko_write_single = widgetlords.func(
+  "pi_spi_8ko_write_single",
+  "void",
+  ["uint8", "uint8", "uint8"],
+);
 
 module.exports = function (RED) {
   function RelayNode(config) {
@@ -16,7 +18,7 @@ module.exports = function (RED) {
 
     node.on("input", function (msg) {
       this.status({ fill: "green", shape: "dot", text: msg.payload });
-      widgetlords.pi_spi_8ko_write_single(
+      pi_spi_8ko_write_single(
         parseInt(node.channel),
         msg.payload,
         parseInt(node.chipenable),

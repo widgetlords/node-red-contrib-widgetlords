@@ -1,31 +1,28 @@
-var ffi = require("ffi-napi");
-var ref = require("ref-napi");
-var Struct = require("ref-struct-di")(ref);
+const koffi = require("koffi");
 
-var sdafe_reading = Struct({
+const sdafe_reading = koffi.struct("sdafe_reading", {
   value: "uint16",
   status: "uint32",
   counts: "uint16",
   type: "uint32",
 });
 
-var widgetlords = ffi.Library("libwidgetlords", {
-  sdafe_set_type: ["void", ["uint8", "uint32"]],
-  sdafe_read: [sdafe_reading, ["uint8"]],
-});
+const widgetlords = koffi.load("libwidgetlords.so");
+const sdafe_set_type = widgetlords.func("sdafe_set_type", "void", [
+  "uint8",
+  "uint32",
+]);
+const sdafe_read = widgetlords.func("sdafe_read", sdafe_reading, ["uint8"]);
 
 module.exports = function (RED) {
   function SdafeNode(config) {
     RED.nodes.createNode(this, config);
     var node = this;
 
-    widgetlords.sdafe_set_type(
-      parseInt(config.channel),
-      parseInt(config.input_type),
-    );
+    sdafe_set_type(parseInt(config.channel), parseInt(config.input_type));
 
     function update() {
-      var value = widgetlords.sdafe_read(parseInt(config.channel));
+      var value = sdafe_read(parseInt(config.channel));
       msg = { payload: value.value, channel: parseInt(config.channel) };
       if (config.topic !== undefined && config.topic !== "")
         msg.topic = config.topic;

@@ -1,10 +1,14 @@
-var ffi = require("ffi-napi");
+const koffi = require("koffi");
 
-var widgetlords = ffi.Library("libwidgetlords", {
-  pi_spi_init: ["void", []],
-  pi_spi_8ai_16b_set_channel: ["void", ["uint8", "uint8"]],
-  pi_spi_8ai_16b_read: ["uint16", ["uint8"]],
-});
+const widgetlords = koffi.load("libwidgetlords.so");
+const pi_spi_8ai_16b_set_channel = widgetlords.func(
+  "pi_spi_8ai_16b_set_channel",
+  "void",
+  ["uint8", "uint8"],
+);
+const pi_spi_8ai_16b_read = widgetlords.func("pi_spi_8ai_16b_read", "uint16", [
+  "uint8",
+]);
 
 module.exports = function (RED) {
   function Node(config) {
@@ -12,11 +16,11 @@ module.exports = function (RED) {
     var node = this;
 
     function update() {
-      widgetlords.pi_spi_8ai_16b_set_channel(
+      pi_spi_8ai_16b_set_channel(
         parseInt(config.channel),
         parseInt(config.chipenable),
       );
-      var value = widgetlords.pi_spi_8ai_16b_read(parseInt(config.chipenable));
+      var value = pi_spi_8ai_16b_read(parseInt(config.chipenable));
       msg = { payload: value };
       if (config.topic !== undefined && config.topic !== "")
         msg.topic = config.topic;

@@ -1,11 +1,26 @@
-var ffi = require("ffi-napi");
+const koffi = require("koffi");
 
-var widgetlords = ffi.Library("libwidgetlords", {
-  pi_spi_din_4freq_read_fixed: ["uint32", ["uint32", "uint8", "uint8"]],
-  pi_spi_din_4freq_read_variable: ["uint32", ["uint32", "uint8", "uint8"]],
-  pi_spi_din_4freq_read_pulse: ["uint32", ["uint32", "uint8", "uint8"]],
-  pi_spi_din_4freq_read_di: ["uint16", ["uint32", "uint8"]],
-});
+const widgetlords = koffi.load("libwidgetlords.so");
+const pi_spi_din_4freq_read_fixed = widgetlords.func(
+  "pi_spi_din_4freq_read_fixed",
+  "uint32",
+  ["uint32", "uint8", "uint8"],
+);
+const pi_spi_din_4freq_read_variable = widgetlords.func(
+  "pi_spi_din_4freq_read_variable",
+  "uint32",
+  ["uint32", "uint8", "uint8"],
+);
+const pi_spi_din_4freq_read_pulse = widgetlords.func(
+  "pi_spi_din_4freq_read_pulse",
+  "uint32",
+  ["uint32", "uint8", "uint8"],
+);
+const pi_spi_din_4freq_read_di = widgetlords.func(
+  "pi_spi_din_4freq_read_di",
+  "uint16",
+  ["uint32", "uint8"],
+);
 
 module.exports = function (RED) {
   function Node(config) {
@@ -16,25 +31,25 @@ module.exports = function (RED) {
       var value = 0;
       let type = parseInt(config.itype);
       if (type === 0) {
-        value = widgetlords.pi_spi_din_4freq_read_fixed(
+        value = pi_spi_din_4freq_read_fixed(
           parseInt(config.chipenable),
           parseInt(config.address),
           parseInt(config.channel),
         );
       } else if (type === 1) {
-        value = widgetlords.pi_spi_din_4freq_read_variable(
+        value = pi_spi_din_4freq_read_variable(
           parseInt(config.chipenable),
           parseInt(config.address),
           parseInt(config.channel),
         );
       } else if (type === 2) {
-        value = widgetlords.pi_spi_din_4freq_read_pulse(
+        value = pi_spi_din_4freq_read_pulse(
           parseInt(config.chipenable),
           parseInt(config.address),
           parseInt(config.channel),
         );
       } else if (type === 3) {
-        value = widgetlords.pi_spi_din_4freq_read_di(
+        value = pi_spi_din_4freq_read_di(
           parseInt(config.chipenable),
           parseInt(config.address),
         );
